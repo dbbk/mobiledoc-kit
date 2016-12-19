@@ -954,7 +954,10 @@ class Editor {
    * @public
    */
   insertAtom(atomName, atomText='', atomPayload={}) {
-    if (!this.hasCursor()) { return; }
+    if (!this.hasCursor()) {
+        alert('no cursor');
+        return;
+    }
     if (this.post.isBlank) {
       this._insertEmptyMarkupSectionAtCursor();
     }
