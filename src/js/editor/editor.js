@@ -957,10 +957,6 @@ class Editor {
     let setCursorToEnd = false;
 
     if (!this.hasCursor()) {
-      if (this.post.isBlank) {
-        this._insertEmptyMarkupSectionAtCursor();
-      }
-
       setCursorToEnd = true;
     }
 
@@ -976,7 +972,9 @@ class Editor {
         const cursorLastSection = this.post.sections.tail;
         console.log('Sections', this.post.sections);
         console.log('Last section', cursorLastSection);
-        postEditor.setRange(cursorLastSection.tailPosition());
+        const cursorTailPosition = cursorLastSection.tailPosition();
+        console.log('Tail position', tailPosition);
+        postEditor.setRange(cursorTailPosition);
       }
 
       let position = range.head;
