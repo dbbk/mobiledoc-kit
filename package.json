@@ -13,8 +13,7 @@
     "deploy:website": "./bin/deploy-website.sh",
     "update-changelog": "conventional-changelog -i CHANGELOG.md -r 0 -s",
     "version": "npm run update-changelog && git add CHANGELOG.md",
-    "prepublish": "npm run build",
-    "preinstall": "npm run prepublish"
+    "prepublish": "npm run build"
   },
   "keywords": [
     "html",
