@@ -14,7 +14,7 @@
     "update-changelog": "conventional-changelog -i CHANGELOG.md -r 0 -s",
     "version": "npm run update-changelog && git add CHANGELOG.md",
     "prepublish": "npm run build",
-    "postinstall": "npm run build"
+    "postinstall": "rm -rf dist && broccoli build dist"
   },
   "keywords": [
     "html",
