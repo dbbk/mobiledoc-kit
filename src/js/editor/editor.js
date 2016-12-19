@@ -973,7 +973,7 @@ class Editor {
     this.run(postEditor => {
       if (setCursorToEnd) {
         console.log('Setting cursor to end');
-        const cursorLastSection = this.post.sections[this.post.sections.length - 1];
+        const cursorLastSection = this.post.sections.tail;
         console.log('Sections', this.post.sections);
         console.log('Last section', cursorLastSection);
         postEditor.setRange(cursorLastSection.tailPosition());
