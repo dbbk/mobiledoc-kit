@@ -954,10 +954,16 @@ class Editor {
    * @public
    */
   insertAtom(atomName, atomText='', atomPayload={}) {
+    let setCursorToEnd = false;
+
     if (!this.hasCursor()) {
-        alert('no cursor');
-        return;
+      if (this.post.isBlank) {
+        this._insertEmptyMarkupSectionAtCursor();
+      }
+
+      setCursorToEnd = true;
     }
+
     if (this.post.isBlank) {
       this._insertEmptyMarkupSectionAtCursor();
     }
@@ -965,6 +971,14 @@ class Editor {
     let atom;
     let { range } = this;
     this.run(postEditor => {
+      if (setCursorToEnd) {
+        console.log('Setting cursor to end');
+        const cursorLastSection = this.post.sections[this.post.sections.length - 1];
+        console.log('Sections', this.post.sections);
+        console.log('Last section', cursorLastSection);
+        postEditor.setRange(cursorLastSection.tailPosition());
+      }
+
       let position = range.head;
 
       atom = postEditor.builder.createAtom(atomName, atomText, atomPayload);
